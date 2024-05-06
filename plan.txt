@@ -1,0 +1,41 @@
+Player Selector {
+    Active
+    Passive
+}
+
+Buttons {
+    Main Menu Buttons {
+        Cpu;
+        Player;
+    }
+
+    InGame Buttons {
+        Small reset button;
+        Quit button;
+        Cancel button;
+        Next round button;
+        Restart button;
+    }
+
+    Overlays {
+        CPU {
+            Lost {
+                X takes;
+                O takes;
+            }
+
+            Won {
+                X takes;
+                O takes;
+            }
+        }
+
+        PVP {
+            O takes;
+            X takes;
+            Tie;
+        }
+
+        Restart
+    }
+}
