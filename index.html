@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta Info -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Title -->
+        <title>TicTacToe</title>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" type="image/x-icon" href="./assets/icon-x.svg">
+    
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script src="./index.js"></script>
+    </head>
+    <body class="df aic jcc">
+        <div id="main-menu" class="df fdc aic jcsb">
+            <img id="mm-logo" class="logo" src="./assets/logo.svg" alt="Logo"/>
+            <div id="player-selector" class="df fdc aic jcc">
+                <p id="selector-header">pick player 1's mark</p>
+                <div id="selector" class="df fdr aic jcsb">
+                    <div id="player-x" class="selectors df aic jcc selector-passive" value="x">
+                        <svg width="32" height="32" class="selector-button" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path id="selector-x" fill-rule="evenodd" clip-rule="evenodd" d="M31.5569 5.28973L26.7103 0.443061C26.1195 -0.147687 25.1617 -0.147687 24.571 0.443061L16 9.01404L7.42902 0.443061C6.83827 -0.147687 5.88048 -0.147687 5.28973 0.443061L0.443061 5.28973C-0.147687 5.88048 -0.147687 6.83827 0.443061 7.42902L9.01404 16L0.443061 24.571C-0.147687 25.1617 -0.147687 26.1195 0.443061 26.7103L5.28973 31.5569C5.88048 32.1477 6.83827 32.1477 7.42902 31.5569L16 22.986L24.571 31.5569C25.1617 32.1477 26.1195 32.1477 26.7103 31.5569L31.5569 26.7103C32.1477 26.1195 32.1477 25.1617 31.5569 24.571L22.986 16L31.5569 7.42902C32.1477 6.83827 32.1477 5.88048 31.5569 5.28973Z" fill="#A8BFC9"/>
+                        </svg>                            
+                    </div>
+                    <div id="player-o" class="selectors df aic jcc selector-passive" value="o">
+                        <svg width="32" height="32" class="selector-button" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path id="selector-o" fill-rule="evenodd" clip-rule="evenodd" d="M31.7412 15.8706C31.7412 7.10551 24.6357 0 15.8706 0C7.10551 0 0 7.10551 0 15.8706C0 24.6357 7.10551 31.7412 15.8706 31.7412C24.6357 31.7412 31.7412 24.6357 31.7412 15.8706ZM9.4048 15.8706C9.4048 12.2996 12.2996 9.4048 15.8706 9.4048C19.4416 9.4048 22.3364 12.2996 22.3364 15.8706C22.3364 19.4416 19.4416 22.3364 15.8706 22.3364C12.2996 22.3364 9.4048 19.4416 9.4048 15.8706Z" fill="#A8BFC9"/>
+                        </svg>                            
+                    </div>
+                </div>
+                <p id="selector-footer">remember: x goes first</p>
+            </div>
+            <div id="play-buttons" class="df fdc aic jcsb">
+                <button id="pvc" class="mmb bo disabled" onclick="pvcStart()">new game(vs cpu)</button>
+                <button id="pvp" class="mmb bc disabled" onclick="pvpStart()">new game(vs player)</button>
+            </div>
+        </div>
+        <div id="pvp-screen" class="df fdc aic jcsb">
+            <div id="pvp-header" class="df fdr aic jcsb">
+                <img id="play-header-logo" class="logo" src="./assets/logo.svg" alt="Logo"/>
+                <div id="play-header-turn" class="turn df fdr aic jcc">
+                    <svg width="16" height="16" id="turn-x" class="turn-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M31.5569 5.28973L26.7103 0.443061C26.1195 -0.147687 25.1617 -0.147687 24.571 0.443061L16 9.01404L7.42902 0.443061C6.83827 -0.147687 5.88048 -0.147687 5.28973 0.443061L0.443061 5.28973C-0.147687 5.88048 -0.147687 6.83827 0.443061 7.42902L9.01404 16L0.443061 24.571C-0.147687 25.1617 -0.147687 26.1195 0.443061 26.7103L5.28973 31.5569C5.88048 32.1477 6.83827 32.1477 7.42902 31.5569L16 22.986L24.571 31.5569C25.1617 32.1477 26.1195 32.1477 26.7103 31.5569L31.5569 26.7103C32.1477 26.1195 32.1477 25.1617 31.5569 24.571L22.986 16L31.5569 7.42902C32.1477 6.83827 32.1477 5.88048 31.5569 5.28973Z" fill="#A8BFC9"/>
+                    </svg>
+                    <svg width="16" height="16" id="turn-o" class="turn-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M31.7412 15.8706C31.7412 7.10551 24.6357 0 15.8706 0C7.10551 0 0 7.10551 0 15.8706C0 24.6357 7.10551 31.7412 15.8706 31.7412C24.6357 31.7412 31.7412 24.6357 31.7412 15.8706ZM9.4048 15.8706C9.4048 12.2996 12.2996 9.4048 15.8706 9.4048C19.4416 9.4048 22.3364 12.2996 22.3364 15.8706C22.3364 19.4416 19.4416 22.3364 15.8706 22.3364C12.2996 22.3364 9.4048 19.4416 9.4048 15.8706Z" fill="#A8BFC9"/>
+                    </svg>
+                    <span>turn</span>   
+                </div>
+                <button id="ingame-restart" class="df aic jcc" onclick=refreshPage()><img id="restart-icon" src="./assets/icon-restart.svg" alt="restart"/></button>
+            </div>
+            <div id="pvp-gamepad" class="df fdc aic jcsb">
+                <div id="pvp-gamepad-blocks" class="df fdr aic jcsb">
+                    <div id="tl" class="block df aic jcc" coordinate="tl" state="empty" taken="none">
+                        <img id="tl-x" class="block-x" src="./assets/icon-x.svg"/>
+                        <img id="tl-o" class="block-o" src="./assets/icon-o.svg"/>
+                        <img id="tl-x-out" class="block-x-out" src="./assets/icon-x-outline.svg"/>
+                        <img id="tl-o-out" class="block-o-out" src="./assets/icon-o-outline.svg"/>
+                        <svg id="tl-x-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-x" fill-rule="evenodd" clip-rule="evenodd" d="M31.5569 5.28973L26.7103 0.443061C26.1195 -0.147687 25.1617 -0.147687 24.571 0.443061L16 9.01404L7.42902 0.443061C6.83827 -0.147687 5.88048 -0.147687 5.28973 0.443061L0.443061 5.28973C-0.147687 5.88048 -0.147687 6.83827 0.443061 7.42902L9.01404 16L0.443061 24.571C-0.147687 25.1617 -0.147687 26.1195 0.443061 26.7103L5.28973 31.5569C5.88048 32.1477 6.83827 32.1477 7.42902 31.5569L16 22.986L24.571 31.5569C25.1617 32.1477 26.1195 32.1477 26.7103 31.5569L31.5569 26.7103C32.1477 26.1195 32.1477 25.1617 31.5569 24.571L22.986 16L31.5569 7.42902C32.1477 6.83827 32.1477 5.88048 31.5569 5.28973Z" fill="#1F3641"/>
+                        </svg>
+                        <svg id="tl-o-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-o" fill-rule="evenodd" clip-rule="evenodd" d="M31.7412 15.8706C31.7412 7.10551 24.6357 0 15.8706 0C7.10551 0 0 7.10551 0 15.8706C0 24.6357 7.10551 31.7412 15.8706 31.7412C24.6357 31.7412 31.7412 24.6357 31.7412 15.8706ZM9.4048 15.8706C9.4048 12.2996 12.2996 9.4048 15.8706 9.4048C19.4416 9.4048 22.3364 12.2996 22.3364 15.8706C22.3364 19.4416 19.4416 22.3364 15.8706 22.3364C12.2996 22.3364 9.4048 19.4416 9.4048 15.8706Z" fill="#1F3641"/>
+                        </svg> 
+                    </div>
+                    <div id="tm" class="block df aic jcc" coordinate="tm" state="empty" taken="none">
+                        <img id="tm-x" class="block-x" src="./assets/icon-x.svg"/>
+                        <img id="tm-o" class="block-o" src="./assets/icon-o.svg"/>
+                        <img id="tm-x-out" class="block-x-out" src="./assets/icon-x-outline.svg"/>
+                        <img id="tm-o-out" class="block-o-out" src="./assets/icon-o-outline.svg"/>
+                        <svg id="tm-x-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-x" fill-rule="evenodd" clip-rule="evenodd" d="M31.5569 5.28973L26.7103 0.443061C26.1195 -0.147687 25.1617 -0.147687 24.571 0.443061L16 9.01404L7.42902 0.443061C6.83827 -0.147687 5.88048 -0.147687 5.28973 0.443061L0.443061 5.28973C-0.147687 5.88048 -0.147687 6.83827 0.443061 7.42902L9.01404 16L0.443061 24.571C-0.147687 25.1617 -0.147687 26.1195 0.443061 26.7103L5.28973 31.5569C5.88048 32.1477 6.83827 32.1477 7.42902 31.5569L16 22.986L24.571 31.5569C25.1617 32.1477 26.1195 32.1477 26.7103 31.5569L31.5569 26.7103C32.1477 26.1195 32.1477 25.1617 31.5569 24.571L22.986 16L31.5569 7.42902C32.1477 6.83827 32.1477 5.88048 31.5569 5.28973Z" fill="#1F3641"/>
+                        </svg>
+                        <svg id="tm-o-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-o" fill-rule="evenodd" clip-rule="evenodd" d="M31.7412 15.8706C31.7412 7.10551 24.6357 0 15.8706 0C7.10551 0 0 7.10551 0 15.8706C0 24.6357 7.10551 31.7412 15.8706 31.7412C24.6357 31.7412 31.7412 24.6357 31.7412 15.8706ZM9.4048 15.8706C9.4048 12.2996 12.2996 9.4048 15.8706 9.4048C19.4416 9.4048 22.3364 12.2996 22.3364 15.8706C22.3364 19.4416 19.4416 22.3364 15.8706 22.3364C12.2996 22.3364 9.4048 19.4416 9.4048 15.8706Z" fill="#1F3641"/>
+                        </svg> 
+                    </div>
+                    <div id="tr" class="block df aic jcc" coordinate="tr" state="empty" taken="none">
+                        <img id="tr-x" class="block-x" src="./assets/icon-x.svg"/>
+                        <img id="tr-o" class="block-o" src="./assets/icon-o.svg"/>
+                        <img id="tr-x-out" class="block-x-out" src="./assets/icon-x-outline.svg"/>
+                        <img id="tr-o-out" class="block-o-out" src="./assets/icon-o-outline.svg"/>
+                        <svg id="tr-x-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-x" fill-rule="evenodd" clip-rule="evenodd" d="M31.5569 5.28973L26.7103 0.443061C26.1195 -0.147687 25.1617 -0.147687 24.571 0.443061L16 9.01404L7.42902 0.443061C6.83827 -0.147687 5.88048 -0.147687 5.28973 0.443061L0.443061 5.28973C-0.147687 5.88048 -0.147687 6.83827 0.443061 7.42902L9.01404 16L0.443061 24.571C-0.147687 25.1617 -0.147687 26.1195 0.443061 26.7103L5.28973 31.5569C5.88048 32.1477 6.83827 32.1477 7.42902 31.5569L16 22.986L24.571 31.5569C25.1617 32.1477 26.1195 32.1477 26.7103 31.5569L31.5569 26.7103C32.1477 26.1195 32.1477 25.1617 31.5569 24.571L22.986 16L31.5569 7.42902C32.1477 6.83827 32.1477 5.88048 31.5569 5.28973Z" fill="#1F3641"/>
+                        </svg>
+                        <svg id="tr-o-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-o" fill-rule="evenodd" clip-rule="evenodd" d="M31.7412 15.8706C31.7412 7.10551 24.6357 0 15.8706 0C7.10551 0 0 7.10551 0 15.8706C0 24.6357 7.10551 31.7412 15.8706 31.7412C24.6357 31.7412 31.7412 24.6357 31.7412 15.8706ZM9.4048 15.8706C9.4048 12.2996 12.2996 9.4048 15.8706 9.4048C19.4416 9.4048 22.3364 12.2996 22.3364 15.8706C22.3364 19.4416 19.4416 22.3364 15.8706 22.3364C12.2996 22.3364 9.4048 19.4416 9.4048 15.8706Z" fill="#1F3641"/>
+                        </svg> 
+                    </div>
+                    <div id="ml" class="block df aic jcc" coordinate="ml" state="empty" taken="none">
+                        <img id="ml-x" class="block-x" src="./assets/icon-x.svg"/>
+                        <img id="ml-o" class="block-o" src="./assets/icon-o.svg"/>
+                        <img id="ml-x-out" class="block-x-out" src="./assets/icon-x-outline.svg"/>
+                        <img id="ml-o-out" class="block-o-out" src="./assets/icon-o-outline.svg"/>
+                        <svg id="ml-x-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-x" fill-rule="evenodd" clip-rule="evenodd" d="M31.5569 5.28973L26.7103 0.443061C26.1195 -0.147687 25.1617 -0.147687 24.571 0.443061L16 9.01404L7.42902 0.443061C6.83827 -0.147687 5.88048 -0.147687 5.28973 0.443061L0.443061 5.28973C-0.147687 5.88048 -0.147687 6.83827 0.443061 7.42902L9.01404 16L0.443061 24.571C-0.147687 25.1617 -0.147687 26.1195 0.443061 26.7103L5.28973 31.5569C5.88048 32.1477 6.83827 32.1477 7.42902 31.5569L16 22.986L24.571 31.5569C25.1617 32.1477 26.1195 32.1477 26.7103 31.5569L31.5569 26.7103C32.1477 26.1195 32.1477 25.1617 31.5569 24.571L22.986 16L31.5569 7.42902C32.1477 6.83827 32.1477 5.88048 31.5569 5.28973Z" fill="#1F3641"/>
+                        </svg>
+                        <svg id="ml-o-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-o" fill-rule="evenodd" clip-rule="evenodd" d="M31.7412 15.8706C31.7412 7.10551 24.6357 0 15.8706 0C7.10551 0 0 7.10551 0 15.8706C0 24.6357 7.10551 31.7412 15.8706 31.7412C24.6357 31.7412 31.7412 24.6357 31.7412 15.8706ZM9.4048 15.8706C9.4048 12.2996 12.2996 9.4048 15.8706 9.4048C19.4416 9.4048 22.3364 12.2996 22.3364 15.8706C22.3364 19.4416 19.4416 22.3364 15.8706 22.3364C12.2996 22.3364 9.4048 19.4416 9.4048 15.8706Z" fill="#1F3641"/>
+                        </svg> 
+                    </div>
+                    <div id="mm" class="block df aic jcc" coordinate="mm" state="empty" taken="none">
+                        <img id="mm-x" class="block-x" src="./assets/icon-x.svg"/>
+                        <img id="mm-o" class="block-o" src="./assets/icon-o.svg"/>
+                        <img id="mm-x-out" class="block-x-out" src="./assets/icon-x-outline.svg"/>
+                        <img id="mm-o-out" class="block-o-out" src="./assets/icon-o-outline.svg"/>
+                        <svg id="mm-x-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-x" fill-rule="evenodd" clip-rule="evenodd" d="M31.5569 5.28973L26.7103 0.443061C26.1195 -0.147687 25.1617 -0.147687 24.571 0.443061L16 9.01404L7.42902 0.443061C6.83827 -0.147687 5.88048 -0.147687 5.28973 0.443061L0.443061 5.28973C-0.147687 5.88048 -0.147687 6.83827 0.443061 7.42902L9.01404 16L0.443061 24.571C-0.147687 25.1617 -0.147687 26.1195 0.443061 26.7103L5.28973 31.5569C5.88048 32.1477 6.83827 32.1477 7.42902 31.5569L16 22.986L24.571 31.5569C25.1617 32.1477 26.1195 32.1477 26.7103 31.5569L31.5569 26.7103C32.1477 26.1195 32.1477 25.1617 31.5569 24.571L22.986 16L31.5569 7.42902C32.1477 6.83827 32.1477 5.88048 31.5569 5.28973Z" fill="#1F3641"/>
+                        </svg>
+                        <svg id="mm-o-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-o" fill-rule="evenodd" clip-rule="evenodd" d="M31.7412 15.8706C31.7412 7.10551 24.6357 0 15.8706 0C7.10551 0 0 7.10551 0 15.8706C0 24.6357 7.10551 31.7412 15.8706 31.7412C24.6357 31.7412 31.7412 24.6357 31.7412 15.8706ZM9.4048 15.8706C9.4048 12.2996 12.2996 9.4048 15.8706 9.4048C19.4416 9.4048 22.3364 12.2996 22.3364 15.8706C22.3364 19.4416 19.4416 22.3364 15.8706 22.3364C12.2996 22.3364 9.4048 19.4416 9.4048 15.8706Z" fill="#1F3641"/>
+                        </svg> 
+                    </div>
+                    <div id="mr" class="block df aic jcc" coordinate="mr" state="empty" taken="none">
+                        <img id="mr-x" class="block-x" src="./assets/icon-x.svg"/>
+                        <img id="mr-o" class="block-o" src="./assets/icon-o.svg"/>
+                        <img id="mr-x-out" class="block-x-out" src="./assets/icon-x-outline.svg"/>
+                        <img id="mr-o-out" class="block-o-out" src="./assets/icon-o-outline.svg"/>
+                        <svg id="mr-x-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-x" fill-rule="evenodd" clip-rule="evenodd" d="M31.5569 5.28973L26.7103 0.443061C26.1195 -0.147687 25.1617 -0.147687 24.571 0.443061L16 9.01404L7.42902 0.443061C6.83827 -0.147687 5.88048 -0.147687 5.28973 0.443061L0.443061 5.28973C-0.147687 5.88048 -0.147687 6.83827 0.443061 7.42902L9.01404 16L0.443061 24.571C-0.147687 25.1617 -0.147687 26.1195 0.443061 26.7103L5.28973 31.5569C5.88048 32.1477 6.83827 32.1477 7.42902 31.5569L16 22.986L24.571 31.5569C25.1617 32.1477 26.1195 32.1477 26.7103 31.5569L31.5569 26.7103C32.1477 26.1195 32.1477 25.1617 31.5569 24.571L22.986 16L31.5569 7.42902C32.1477 6.83827 32.1477 5.88048 31.5569 5.28973Z" fill="#1F3641"/>
+                        </svg>
+                        <svg id="mr-o-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-o" fill-rule="evenodd" clip-rule="evenodd" d="M31.7412 15.8706C31.7412 7.10551 24.6357 0 15.8706 0C7.10551 0 0 7.10551 0 15.8706C0 24.6357 7.10551 31.7412 15.8706 31.7412C24.6357 31.7412 31.7412 24.6357 31.7412 15.8706ZM9.4048 15.8706C9.4048 12.2996 12.2996 9.4048 15.8706 9.4048C19.4416 9.4048 22.3364 12.2996 22.3364 15.8706C22.3364 19.4416 19.4416 22.3364 15.8706 22.3364C12.2996 22.3364 9.4048 19.4416 9.4048 15.8706Z" fill="#1F3641"/>
+                        </svg> 
+                    </div>
+                    <div id="bl" class="block df aic jcc" coordinate="bl" state="empty" taken="none">    
+                        <img id="bl-x" class="block-x" src="./assets/icon-x.svg"/>
+                        <img id="bl-o" class="block-o" src="./assets/icon-o.svg"/>
+                        <img id="bl-x-out" class="block-x-out" src="./assets/icon-x-outline.svg"/>
+                        <img id="bl-o-out" class="block-o-out" src="./assets/icon-o-outline.svg"/>
+                        <svg id="bl-x-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-x" fill-rule="evenodd" clip-rule="evenodd" d="M31.5569 5.28973L26.7103 0.443061C26.1195 -0.147687 25.1617 -0.147687 24.571 0.443061L16 9.01404L7.42902 0.443061C6.83827 -0.147687 5.88048 -0.147687 5.28973 0.443061L0.443061 5.28973C-0.147687 5.88048 -0.147687 6.83827 0.443061 7.42902L9.01404 16L0.443061 24.571C-0.147687 25.1617 -0.147687 26.1195 0.443061 26.7103L5.28973 31.5569C5.88048 32.1477 6.83827 32.1477 7.42902 31.5569L16 22.986L24.571 31.5569C25.1617 32.1477 26.1195 32.1477 26.7103 31.5569L31.5569 26.7103C32.1477 26.1195 32.1477 25.1617 31.5569 24.571L22.986 16L31.5569 7.42902C32.1477 6.83827 32.1477 5.88048 31.5569 5.28973Z" fill="#1F3641"/>
+                        </svg>
+                        <svg id="bl-o-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-o" fill-rule="evenodd" clip-rule="evenodd" d="M31.7412 15.8706C31.7412 7.10551 24.6357 0 15.8706 0C7.10551 0 0 7.10551 0 15.8706C0 24.6357 7.10551 31.7412 15.8706 31.7412C24.6357 31.7412 31.7412 24.6357 31.7412 15.8706ZM9.4048 15.8706C9.4048 12.2996 12.2996 9.4048 15.8706 9.4048C19.4416 9.4048 22.3364 12.2996 22.3364 15.8706C22.3364 19.4416 19.4416 22.3364 15.8706 22.3364C12.2996 22.3364 9.4048 19.4416 9.4048 15.8706Z" fill="#1F3641"/>
+                        </svg> 
+                    </div>
+                    <div id="bm" class="block df aic jcc" coordinate="bm" state="empty" taken="none">
+                        <img id="bm-x" class="block-x" src="./assets/icon-x.svg"/>
+                        <img id="bm-o" class="block-o" src="./assets/icon-o.svg"/>
+                        <img id="bm-x-out" class="block-x-out" src="./assets/icon-x-outline.svg"/>
+                        <img id="bm-o-out" class="block-o-out" src="./assets/icon-o-outline.svg"/>
+                        <svg id="bm-x-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-x" fill-rule="evenodd" clip-rule="evenodd" d="M31.5569 5.28973L26.7103 0.443061C26.1195 -0.147687 25.1617 -0.147687 24.571 0.443061L16 9.01404L7.42902 0.443061C6.83827 -0.147687 5.88048 -0.147687 5.28973 0.443061L0.443061 5.28973C-0.147687 5.88048 -0.147687 6.83827 0.443061 7.42902L9.01404 16L0.443061 24.571C-0.147687 25.1617 -0.147687 26.1195 0.443061 26.7103L5.28973 31.5569C5.88048 32.1477 6.83827 32.1477 7.42902 31.5569L16 22.986L24.571 31.5569C25.1617 32.1477 26.1195 32.1477 26.7103 31.5569L31.5569 26.7103C32.1477 26.1195 32.1477 25.1617 31.5569 24.571L22.986 16L31.5569 7.42902C32.1477 6.83827 32.1477 5.88048 31.5569 5.28973Z" fill="#1F3641"/>
+                        </svg>
+                        <svg id="bm-o-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-o" fill-rule="evenodd" clip-rule="evenodd" d="M31.7412 15.8706C31.7412 7.10551 24.6357 0 15.8706 0C7.10551 0 0 7.10551 0 15.8706C0 24.6357 7.10551 31.7412 15.8706 31.7412C24.6357 31.7412 31.7412 24.6357 31.7412 15.8706ZM9.4048 15.8706C9.4048 12.2996 12.2996 9.4048 15.8706 9.4048C19.4416 9.4048 22.3364 12.2996 22.3364 15.8706C22.3364 19.4416 19.4416 22.3364 15.8706 22.3364C12.2996 22.3364 9.4048 19.4416 9.4048 15.8706Z" fill="#1F3641"/>
+                        </svg> 
+                    </div>
+                    <div id="br" class="block df aic jcc" coordinate="br" state="empty" taken="none">
+                        <img id="br-x" class="block-x" src="./assets/icon-x.svg"/>
+                        <img id="br-o" class="block-o" src="./assets/icon-o.svg"/>
+                        <img id="br-x-out" class="block-x-out" src="./assets/icon-x-outline.svg"/>
+                        <img id="br-o-out" class="block-o-out" src="./assets/icon-o-outline.svg"/>
+                        <svg id="br-x-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-x" fill-rule="evenodd" clip-rule="evenodd" d="M31.5569 5.28973L26.7103 0.443061C26.1195 -0.147687 25.1617 -0.147687 24.571 0.443061L16 9.01404L7.42902 0.443061C6.83827 -0.147687 5.88048 -0.147687 5.28973 0.443061L0.443061 5.28973C-0.147687 5.88048 -0.147687 6.83827 0.443061 7.42902L9.01404 16L0.443061 24.571C-0.147687 25.1617 -0.147687 26.1195 0.443061 26.7103L5.28973 31.5569C5.88048 32.1477 6.83827 32.1477 7.42902 31.5569L16 22.986L24.571 31.5569C25.1617 32.1477 26.1195 32.1477 26.7103 31.5569L31.5569 26.7103C32.1477 26.1195 32.1477 25.1617 31.5569 24.571L22.986 16L31.5569 7.42902C32.1477 6.83827 32.1477 5.88048 31.5569 5.28973Z" fill="#1F3641"/>
+                        </svg>
+                        <svg id="br-o-win" class="winning-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="winning-o" fill-rule="evenodd" clip-rule="evenodd" d="M31.7412 15.8706C31.7412 7.10551 24.6357 0 15.8706 0C7.10551 0 0 7.10551 0 15.8706C0 24.6357 7.10551 31.7412 15.8706 31.7412C24.6357 31.7412 31.7412 24.6357 31.7412 15.8706ZM9.4048 15.8706C9.4048 12.2996 12.2996 9.4048 15.8706 9.4048C19.4416 9.4048 22.3364 12.2996 22.3364 15.8706C22.3364 19.4416 19.4416 22.3364 15.8706 22.3364C12.2996 22.3364 9.4048 19.4416 9.4048 15.8706Z" fill="#1F3641"/>
+                        </svg> 
+                    </div>
+                </div>
+                <div id="gamepad-footer" class="df fdr aic jcsb">
+                    <div id="x-score" class="game-info df fdc aic jcc">
+                        <span id="pvp-player-x" class="game-info-header">x</span>
+                        <span id="pvp-player-x-score" class="game-info-score">0</span>
+                    </div>
+                    <div id="tie-score" class="game-info df fdc aic jcc">
+                        <span id="pvp-ties" class="game-info-header">ties</span>
+                        <span id="pvp-ties-score" class="game-info-score">0</span>
+                    </div>
+                    <div id="o-score" class="game-info df fdc aic jcc">
+                        <span id="pvp-player-o" class="game-info-header">o</span>
+                        <span id="pvp-player-o-score" class="game-info-score">0</span>
+                    </div>
+                </div>
+            </div>
+            <div id="player-wins-background" class="overlay df fdc aic jcc">
+                <div id="player-wins-content" class="takes-round-content df fdc aic jcc">
+                    <p id="player-wins-header" class="player-wins"></p>
+                    <div id="p1-takes-round" class="player-takes-round df fdr aic">
+                        <img id="-x-takes" class="logo-takes-round" src="./assets/icon-x.svg"/>
+                        <img id="-o-takes" class="logo-takes-round" src="./assets/icon-o.svg"/>
+                        <p id="player-takes-round" class="takes-round-text">takes the round</p>
+                    </div>
+                    <div class="overlay-buttons df fdr aic jcc">
+                        <button class="quit-button" onclick="refreshPage()">quit</button>
+                        <button class="next-round" onclick="nextRound()">next round</button>
+                    </div>
+                </div>
+            </div>
+            <div id="tie-background" class="overlay df fdc aic jcc">
+                <div id="tie-content" class="takes-round-content df fdc aic jcc">
+                    <p id="tie-header">round tied</p>
+                    <div class="overlay-buttons df fdr aic jcc">
+                        <button class="quit-button" onclick="refreshPage()">quit</button>
+                        <button class="next-round" onclick="nextRound()">next round</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

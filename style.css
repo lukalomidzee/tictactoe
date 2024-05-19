@@ -1,0 +1,426 @@
+/* Classes */
+.df {
+    display: flex;
+}
+
+.fdr {
+    flex-direction: row;
+}
+
+.fdc {
+    flex-direction: column;
+}
+
+.aic {
+    align-items: center;
+}
+
+.jcc {
+    justify-content: center;
+}
+
+.jcsb {
+    justify-content: space-between;
+}
+
+.jcsa {
+    justify-content: space-around;
+}
+
+.jcse {
+    justify-content: space-evenly;
+}
+
+.bo {
+    background-color: #F2B137;
+}
+
+.bo:hover {
+    background-color: #FFC860;
+}
+
+.bc {
+    background-color: #31C3BD;
+}
+
+.bc:hover {
+    background-color: #65E9E4;
+}
+
+.bs {
+    background-color: #A8BFC9;
+}
+
+/* Styles */
+
+* {
+    text-transform: uppercase;
+    font-family: 'Outfit', sans-serif;
+    user-select: none;
+}
+
+body {
+    background-color: #1A2A33;
+    height: 100vh;
+}
+
+/* Main Menu */
+.logo {
+    width: 72px;
+    height: 32px;
+}
+
+#main-menu {
+    gap: 32px;
+}
+
+#player-selector {
+    width: 327px;
+    height: 205px;
+    background-color: #1F3641;
+    border-radius: 15px;
+    box-shadow: 0px -8px inset #10212A;
+}
+
+#selector-header {
+    margin: 24px 0px;
+    color: #A8BFC9;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#selector {
+    width: 263px;
+    height: 54px;
+    border-radius: 10px;
+    background-color: #1A2A33;
+    padding: 9px 8px;
+    box-shadow: 0px 2px 4px #10212A;
+}
+
+.selectors {
+    width: 132px;
+    height: 54px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #1A2A33;
+    transition: 0.3s ease;
+}
+
+path {
+    transition: 0.3s ease;
+}
+
+.selector-button {
+    width: 32px;
+    height: 32px;
+}
+
+.selector-passive {
+    background-color: #1A2A33;
+}
+
+.selector-passive:hover {
+    background-color: #21313A;
+}
+
+.selector-active {
+    background-color: #A8BFC9;
+}
+
+.selector-active path {
+    fill: #1A2A33;
+}
+
+
+#selector-footer {
+    margin-top: 17px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.88px;
+    color: #A8BFC9;
+    opacity: 50%;
+}
+
+#play-buttons {
+    gap: 16px;   
+}
+
+.mmb {
+    width: 327px;
+    height: 56px;
+    border-radius: 15px;
+    border: 0;
+    cursor: pointer;
+}
+
+#pvc {
+    transition: 0.3s ease;
+    box-shadow: 0px -8px #CC8B13 inset;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #1A2A33;
+    padding-bottom: 8px;
+}
+
+#pvp {
+    transition: 0.3s ease;
+    box-shadow: 0px -8px #118C87 inset;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #1A2A33;
+    padding-bottom: 8px;
+}
+
+.mmb.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* PVP */
+
+#turn-o {
+    display: none;
+}
+
+#pvp-screen {
+    width: 328px;
+    gap: 64px;
+}
+
+#pvp-header {
+    width: 100%;
+    gap: 46px;
+}
+
+#play-header-turn {
+    width: 96px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.88px;
+    color: #A8BFC9;
+    gap: 9px;
+    background-color: #1F3641;
+    box-shadow: 0px -4px inset #10212A;
+}
+
+.turn-icon, #play-header-turn > span {
+    padding-bottom: 4px;
+}
+
+#ingame-restart {
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius:5px;
+    background-color: #A8BFC9;
+    box-shadow: 0px -4px inset #6B8997;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-left: 28px;
+}
+
+#ingame-restart:hover {
+    background-color: #DBE8ED;
+}
+
+#restart-icon {
+    width: 15.4px;
+    height: 15.4px;
+}
+
+#pvp-gamepad {
+    gap: 24px;
+}
+
+#pvp-gamepad-blocks {
+    flex-wrap: wrap;
+    gap: 20px 20px;
+}
+
+.block {
+    width: 96px;
+    height: 88px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #1F3641;
+    box-shadow: 0px 8px #10212A;
+    cursor: pointer;
+}
+
+.block-x, .block-o, .block-x-out, .block-o-out {
+    width: 40px;
+    height: 40px;
+}
+
+.block-x {
+    display: none;
+} 
+
+.block-o {
+    display: none;
+}
+
+.block-x-out {
+    display: none;
+}
+
+.block-o-out {
+    display: none;
+}
+
+#gamepad-footer {
+    width: 100%;
+}
+
+.game-info {
+    width: 96px;
+    height: 64px;
+    border-radius: 10px;
+    color: #1A2A33;
+}
+
+.game-info-header {
+    font-size: 12px;
+    letter-spacing: 0.75px;
+    font-weight: 500;
+}
+
+.game-info-score {
+    font-size: 20px;
+    letter-spacing: 1.25px;
+    font-weight: 700;
+}
+
+#x-score {
+    background-color: #31C3BD;
+}
+
+#tie-score {
+    background-color: #A8BFC9;
+}
+
+#o-score {
+    background-color: #F2B137;
+}
+
+/* Overlays */
+#player-wins-background, #tie-background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.takes-round-content {
+    width: 100%;
+    height: 228px;
+    background-color: #1F3641;
+}
+
+.player-wins {
+    font-size: 14px;
+    letter-spacing: 0.88px;
+    font-weight: 700;
+    color: #A8BFC9;
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+#tie-header {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #A8BFC9;
+}
+
+.player-takes-round {
+    height: 30px;
+    margin-bottom: 24px;
+    gap: 8px;
+}
+
+.logo-takes-round {
+    width: 30px;
+    height: 30px;
+}
+
+.takes-round-text {
+    font-size: 24px;
+    letter-spacing: 1.5px;
+    font-weight: 700; 
+}
+
+.overlay-buttons {
+    gap: 16px;
+}
+
+.quit-button {
+    width: 76px;
+    height: 48px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #1A2A33;
+    background-color: #A8BFC9;
+    box-shadow: 0px 4px #6B8997;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.next-round {
+    width: 146px;
+    height: 48px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #1A2A33;
+    background-color: #F2B137;
+    box-shadow: 0px 4px #CC8B13;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.next-round:hover {
+    background-color: #FFC860;
+}
+
+.quit-button:hover {
+    background-color: #DBE8ED;
+}
+
+/* Important Styles */
+.winning-svg {
+    display: none;
+    width: 40px;
+    height: 40px;
+}
+
+#pvp-screen {
+    display: none;
+}
+
+.overlay {
+    display: none;
+}
+
+.highlighted {
+    display: block;
+}
+
+.hovered {
+    display: block;
+}
+
